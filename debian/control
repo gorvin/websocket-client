@@ -6,7 +6,7 @@ Build-Depends: python-setuptools (>= 0.6b3), debhelper (>= 7), python-support (>
 Standards-Version: 3.8.4
 XS-Python-Version: current
 
-Package: python-websocket-client
+Package: websocket-client
 Architecture: all
 Depends: ${misc:Depends}, ${python:Depends}
 XB-Python-Version: ${python:Versions}
