@@ -1,6 +1,6 @@
 from setuptools import setup
 
-VERSION = "0.12.0"
+VERSION = "0.13.0"
 
 
 setup(
@@ -24,6 +24,11 @@ setup(
         "Intended Audience :: Developers",
     ],
     keywords='websockets',
-    py_modules=["websocket"],
-    scripts=["bin/wsdump.py"]
+    scripts=["bin/wsdump.py"],
+    install_requires=['backports.ssl_match_hostname'],
+    packages=["tests", "websocket"],
+    package_data={
+        'tests': ['data/*.txt'],
+        'websocket': ["cacert.pem"]
+    },
 )

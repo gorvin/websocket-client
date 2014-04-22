@@ -18,7 +18,9 @@ This module is tested on only Python 2.7.
 
 Type "python setup.py install" or "pip install websocket-client" to install.
 
-This module does not depend on any other module.
+This module depend on
+
+ - backports.ssl_match_hostname
 
 How about Python 3
 ===========================
@@ -114,7 +116,7 @@ positional arguments:
 
 optional arguments:
   -h, --help                           show this help message and exit
-
+WebSocketApp
   -v VERBOSE, --verbose VERBOSE    set verbose mode. If set to 1, show opcode. If set to 2, enable to trace websocket module
 
 example::
@@ -125,6 +127,17 @@ example::
 
 ChangeLog
 ============
+
+- v0.13.0
+  
+  - MemoryError when receiving large amount of data (~60 MB) at once(ISSUE#59)
+  - Controlling fragmentation(ISSUE#55)
+  - server certificate validation(ISSUE#56)
+  - PyPI tarball is missing test_websocket.py(ISSUE#65)
+  - Payload length encoding bug(ISSUE#58)
+  - disable Nagle algorithm by default(ISSUE#41)
+  - Better event loop in WebSocketApp(ISSUE#63)
+  - Skip tests that require Internet access by default(ISSUE#66)
 
 - v0.12.0
 
