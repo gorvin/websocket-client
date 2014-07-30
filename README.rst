@@ -6,6 +6,13 @@ websocket-client module  is WebSocket client for python. This provide the low le
 
 websocket-client supports only hybi-13.
 
+CAUTION
+============
+
+We have a big change on version 0.14.0.
+So, please test carefully.
+
+
 License
 ============
 
@@ -14,22 +21,45 @@ License
 Installation
 =============
 
-This module is tested on only Python 2.7.
+This module is tested on Python 2.7 and Python 3.x.
 
 Type "python setup.py install" or "pip install websocket-client" to install.
 
+.. CAUTION::
+
+  from v0.16.0, we can install by "pip install websocket-client" for python 3.
+
 This module depend on
 
- - backports.ssl_match_hostname
+ - six
+ - backports.ssl_match_hostname for Python 2.x
 
 How about Python 3
 ===========================
 
-py3( https://github.com/liris/websocket-client/tree/py3 ) branch is for python 3.3. Every test case is passed.
-If you are using python3, please check it.
+Now, we support python 3 on  single source code from version 0.14.0. Thanks, @battlemidget and @ralphbean.
+
+HTTP Proxy
+=============
+
+Support websocket access via http proxy.
+The proxy server must allow "CONNECT" method to websocket port.
+Default squid setting is "ALLOWED TO CONNECT ONLY HTTPS PORT".
+
+Current implementation of websocket-client is using "CONNECT" method via proxy.
+
+
+example::
+-------------
+
+    import websocket
+    ws = websocket.WebSocket(support_socket_io="0.9")
+      :
+
+
 
 Example
-============
+=============
 
 Low Level API example::
 
@@ -54,39 +84,38 @@ sockopt example:
 
 JavaScript websocket-like API example::
 
-  import websocket
-  import thread
-  import time
-  
-  def on_message(ws, message):
-      print message
-  
-  def on_error(ws, error):
-      print error
-  
-  def on_close(ws):
-      print "### closed ###"
-  
-  def on_open(ws):
-      def run(*args):
-          for i in range(3):
-              time.sleep(1)
-              ws.send("Hello %d" % i)
-          time.sleep(1)
-          ws.close()
-          print "thread terminating..."
-      thread.start_new_thread(run, ())
-  
-  
-  if __name__ == "__main__":
-      websocket.enableTrace(True)
-      ws = websocket.WebSocketApp("ws://echo.websocket.org/",
+    import websocket
+    import thread
+    import time
+
+    def on_message(ws, message):
+        print message
+
+    def on_error(ws, error):
+        print error
+
+    def on_close(ws):
+        print "### closed ###"
+
+    def on_open(ws):
+        def run(*args):
+            for i in range(3):
+                time.sleep(1)
+                ws.send("Hello %d" % i)
+            time.sleep(1)
+            ws.close()
+            print "thread terminating..."
+        thread.start_new_thread(run, ())
+
+
+    if __name__ == "__main__":
+        websocket.enableTrace(True)
+        ws = websocket.WebSocketApp("ws://echo.websocket.org/",
                                   on_message = on_message,
                                   on_error = on_error,
                                   on_close = on_close)
-      ws.on_open = on_open
-      
-      ws.run_forever()
+        ws.on_open = on_open
+        ws.run_forever()
 
 
 wsdump.py
@@ -128,8 +157,28 @@ example::
 ChangeLog
 ============
 
+- v0.16.0
+
+  - lock some method for multithread. (#92)
+  - disable cert verification. (#89)
+
+- v0.15.0
+
+  - fixed exception when send a large message (#84)
+
+- v0.14.1
+
+  - fixed to work on Python2.6 (#83)
+
+- v0.14.0
+
+  - Support python 3(#73)
+  - Support IPv6(#77)
+  - Support explicit web proxy(#57)
+  - specify cookie in connect method option(#82)
+
 - v0.13.0
-  
+
   - MemoryError when receiving large amount of data (~60 MB) at once(ISSUE#59)
   - Controlling fragmentation(ISSUE#55)
   - server certificate validation(ISSUE#56)
@@ -182,7 +231,7 @@ ChangeLog
 - v0.6.0
 
   - Patches: UUID4, self.keep_running, mask_key (ISSUE#11)
-  - add wsdump.py tool 
+  - add wsdump.py tool
 
 - v0.5.2
 
@@ -199,4 +248,4 @@ ChangeLog
 - v0.4.1
 
   - fix incorrect custom header order(ISSUE#1)
-   
+

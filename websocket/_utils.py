@@ -18,5 +18,12 @@ Copyright (C) 2010 Hiroki Ohtani(liris)
     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 """
-from ._core import *
-from ._app import WebSocketApp
+
+
+class NoLock(object):
+    def __enter__(self):
+        pass
+
+    def __exit__(self,type, value, traceback):
+        pass
+
