@@ -1,10 +1,10 @@
-websocket-client (0.13.0-ubnt1) unstable; urgency=low
+websocket-client (0.16.0a-ubnt1) unstable; urgency=low
 
   * New version
 
- -- Keh-Ming Luoh <kmluoh@ubnt.com>  Tue, 03 Jun 2014 15:12:03 -0700
+ -- Keh-Ming Luoh <kmluoh@ubnt.com>  Tue, 30 Jul 2014 11:48:03 -0700
 
-websocket-client (0.13.0-1) unstable; urgency=low
+websocket-client (0.16.0a-1) unstable; urgency=low
 
   * source package automatically created by stdeb 0.6.0
 

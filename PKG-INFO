@@ -1,6 +1,6 @@
 Metadata-Version: 1.1
 Name: websocket-client
-Version: 0.13.0
+Version: 0.16.0a
 Summary: WebSocket client for python. hybi13 is supported.
 Home-page: https://github.com/liris/websocket-client
 Author: liris
@@ -136,6 +136,27 @@ Description: =================
         ChangeLog
         ============
         
+        - v0.16.0
+
+          - lock some method for multithread. (#92)
+          - disable cert verification. (#89)
+
+        - v0.15.0
+
+          - fixed exception when send a large message (#84)
+
+        - v0.14.1
+
+          - fixed to work on Python2.6 (#83)
+
+        - v0.14.0
+
+          - Support python 3(#73)
+          - Support IPv6(#77)
+          - Support explicit web proxy(#57)
+          - specify cookie in connect method option(#82)
+
+
         - v0.13.0
           
           - MemoryError when receiving large amount of data (~60 MB) at once(ISSUE#59)
