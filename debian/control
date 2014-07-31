@@ -8,7 +8,7 @@ XS-Python-Version: current
 
 Package: python-websocket-client
 Architecture: all
-Depends: ${misc:Depends}, ${python:Depends}
+Depends: ${misc:Depends}, ${python:Depends}, python-six
 XB-Python-Version: ${python:Versions}
 Provides: ${python:Provides}
 Description: WebSocket client for python. hybi13 is supported.
