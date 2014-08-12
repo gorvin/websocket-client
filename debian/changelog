@@ -1,3 +1,9 @@
+websocket-client (0.16.0a-ubnt2) unstable; urgency=low
+
+  * New version
+
+ -- Keh-Ming Luoh <kmluoh@ubnt.com>  Tue, 12 Aug 2014 14:51:16 -0700
+
 websocket-client (0.16.0a-ubnt1) unstable; urgency=low
 
   * upgrade to v0.16.0a from upstream source
